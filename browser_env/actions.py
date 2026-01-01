@@ -886,12 +886,16 @@ async def aexecute_click_current(page: APage) -> None:
 def execute_type(keys: list[int], page: Page) -> None:
     """Send keystrokes to the focused element."""
     text = "".join([_id2key[key] for key in keys])
+    # Clear existing text in the focused element
+    page.evaluate("document.activeElement.value = ''")
     page.keyboard.type(text)
 
 
 async def aexecute_type(keys: list[int], page: APage) -> None:
     """Send keystrokes to the focused element."""
     text = "".join([_id2key[key] for key in keys])
+    # Clear existing text in the focused element
+    await page.evaluate("document.activeElement.value = ''")
     await page.keyboard.type(text)
 
 
