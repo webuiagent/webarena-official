@@ -1,3 +1,7 @@
+# About this repository
+
+Public repository forked from webarena. Used to work with SynthAgent.
+
 # WebArena: A Realistic Web Environment for Building Autonomous Agents
 <p align="center">
     <img src="media/logo.png" alt="Logo" width="80px">
