@@ -78,8 +78,11 @@ class TextObervationProcessor(ObservationProcessor):
         bounds = tree["documents"][0]["layout"]["bounds"]
         b = bounds[0]
         n = b[2] / self.viewport_size["width"]
-        bounds = [[x / n for x in bound] for bound in bounds]
-        tree["documents"][0]["layout"]["bounds"] = bounds
+        if n != 0:
+            bounds = [[x / n for x in bound] for bound in bounds]
+            tree["documents"][0]["layout"]["bounds"] = bounds
+        else:
+            pass # unexpected case, do nothing
 
         # extract browser info
         win_top_bound = page.evaluate("window.pageYOffset")
